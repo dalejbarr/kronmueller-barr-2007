@@ -8,7 +8,7 @@ Currently this repository contains only response time data for Experiment 2.
 
 ## Experiment 2
 
-- 1792 total observations from 56 subjects and 32 stimuli (*Note*: three observations were removed; see p. 447 of the manuscript)
+- 1789 total observations taken over 56 subjects and 32 stimuli (*Note*: three observations were removed due to implausibly fast responding; see p. 447 of the manuscript)
 
 ### Response Time
 
