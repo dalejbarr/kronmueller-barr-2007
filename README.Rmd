@@ -6,8 +6,6 @@ Kronmüller, E., &amp; Barr, D. J. (2007). [Perspective-free pragmatics: Broken 
 
 Currently this repository contains only response time data for Experiment 2.
 
-# Codebooks
-
 ## Experiment 2
 
 - 1792 total observations from 56 subjects and 32 stimuli (*Note*: three observations were removed; see p. 447 of the manuscript)
@@ -16,7 +14,9 @@ Currently this repository contains only response time data for Experiment 2.
 
 - The full data are available in [`kb07_exp2_rt.rds`](kb07_exp2_rt.rds).
 
-```{r rt_codebook, message = FALSE, results = 'markdown', echo = FALSE}
+#### Codebook
+
+```{r exp2-rt-codebook, message = FALSE, results = 'markdown', echo = FALSE}
 suppressPackageStartupMessages(library("tidyverse"))
 
 tribble(~column, ~description,
@@ -34,7 +34,7 @@ tribble(~column, ~description,
 
 *Note:* The values in Table 3 are based on the raw (non-truncated) values.
 
-```{r tbl-3}
+```{r exp2-tbl-3}
 library("tidyverse")
 
 kb07 <- readRDS("kb07_exp2_rt.rds")
@@ -48,7 +48,7 @@ kb07 %>%
 
 #### Analysis by Subject (p. 448)
 
-```{r f1-f2, echo = TRUE}
+```{r exp2-f1, echo = TRUE}
 subj_means_trunc <- kb07 %>%
   group_by(subj, spkr, prec, load) %>%
   summarize(rt = mean(rt_trunc)) %>%
@@ -69,7 +69,7 @@ by_subj %>%
 
 #### Analysis by Item (p. 448)
 
-```{r exp2-rt-by-item}
+```{r exp2-f2}
 item_means_trunc <- kb07 %>%
   group_by(item, spkr, prec, load) %>%
   summarize(rt = mean(rt_trunc)) %>%

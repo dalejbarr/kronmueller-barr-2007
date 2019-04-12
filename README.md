@@ -8,9 +8,6 @@ Kronmüller, E., & Barr, D. J. (2007). [Perspective-free pragmatics: Broken prec
 
 Currently this repository contains only response time data for Experiment 2.
 
-Codebooks
-=========
-
 Experiment 2
 ------------
 
@@ -19,6 +16,8 @@ Experiment 2
 ### Response Time
 
 -   The full data are available in [`kb07_exp2_rt.rds`](kb07_exp2_rt.rds).
+
+#### Codebook
 
 | column     | description                                    |
 |:-----------|:-----------------------------------------------|
