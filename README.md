@@ -18,15 +18,15 @@ Experiment 2
 
 ### Response Time
 
-| column    | description                                    |
-|:----------|:-----------------------------------------------|
-| subj      | unique subject identifier                      |
-| item      | unique stimulus item identifier                |
-| spkr      | whether the speaker was old or new             |
-| prec      | whether the precedent was broken or maintained |
-| load      | whether the subject was under cognitive load   |
-| rt\_trunc | response time, truncated at 5171 ms            |
-| rt\_raw   | response time, not truncated                   |
+| column     | description                                    |
+|:-----------|:-----------------------------------------------|
+| `subj`     | unique subject identifier                      |
+| `item`     | unique stimulus item identifier                |
+| `spkr`     | whether the speaker was old or new             |
+| `prec`     | whether the precedent was broken or maintained |
+| `load`     | whether the subject was under cognitive load   |
+| `rt_trunc` | response time, truncated at 5171 ms            |
+| `rt_raw`   | response time, not truncated                   |
 
 #### Table 3 (p. 448)
 
@@ -73,18 +73,18 @@ by_subj <- ez::ezANOVA(subj_means_trunc,
             type = 3)$ANOVA
 
 by_subj %>%
-  knitr::kable("markdown", digits = 2)
+  knitr::kable("markdown", digits = 2, row.names = FALSE) 
 ```
 
-|     | Effect         |  DFn|  DFd|       F|     p| p&lt;.05 |   ges|
-|:----|:---------------|----:|----:|-------:|-----:|:---------|-----:|
-| 2   | spkr           |    1|   55|    9.71|  0.00| \*       |  0.02|
-| 3   | prec           |    1|   55|  231.90|  0.00| \*       |  0.28|
-| 4   | load           |    1|   55|   13.22|  0.00| \*       |  0.02|
-| 5   | spkr:prec      |    1|   55|    1.18|  0.28|          |  0.00|
-| 6   | spkr:load      |    1|   55|    1.10|  0.30|          |  0.00|
-| 7   | prec:load      |    1|   55|    0.05|  0.83|          |  0.00|
-| 8   | spkr:prec:load |    1|   55|    1.34|  0.25|          |  0.00|
+| Effect         |  DFn|  DFd|       F|     p| p&lt;.05 |   ges|
+|:---------------|----:|----:|-------:|-----:|:---------|-----:|
+| spkr           |    1|   55|    9.71|  0.00| \*       |  0.02|
+| prec           |    1|   55|  231.90|  0.00| \*       |  0.28|
+| load           |    1|   55|   13.22|  0.00| \*       |  0.02|
+| spkr:prec      |    1|   55|    1.18|  0.28|          |  0.00|
+| spkr:load      |    1|   55|    1.10|  0.30|          |  0.00|
+| prec:load      |    1|   55|    0.05|  0.83|          |  0.00|
+| spkr:prec:load |    1|   55|    1.34|  0.25|          |  0.00|
 
 #### Analysis by Item (p. 448)
 
@@ -104,15 +104,15 @@ by_item <- ez::ezANOVA(item_means_trunc,
             type = 3)$ANOVA
 
 by_item %>%
-  knitr::kable("markdown", digits = 2)
+  knitr::kable("markdown", digits = 2, row.names = FALSE)
 ```
 
-|     | Effect         |  DFn|  DFd|      F|     p| p&lt;.05 |   ges|
-|:----|:---------------|----:|----:|------:|-----:|:---------|-----:|
-| 2   | spkr           |    1|   31|   8.76|  0.01| \*       |  0.01|
-| 3   | prec           |    1|   31|  42.35|  0.00| \*       |  0.27|
-| 4   | load           |    1|   31|  18.46|  0.00| \*       |  0.02|
-| 5   | spkr:prec      |    1|   31|   1.40|  0.25|          |  0.00|
-| 6   | spkr:load      |    1|   31|   0.78|  0.38|          |  0.00|
-| 7   | prec:load      |    1|   31|   0.05|  0.82|          |  0.00|
-| 8   | spkr:prec:load |    1|   31|   1.12|  0.30|          |  0.00|
+| Effect         |  DFn|  DFd|      F|     p| p&lt;.05 |   ges|
+|:---------------|----:|----:|------:|-----:|:---------|-----:|
+| spkr           |    1|   31|   8.76|  0.01| \*       |  0.01|
+| prec           |    1|   31|  42.35|  0.00| \*       |  0.27|
+| load           |    1|   31|  18.46|  0.00| \*       |  0.02|
+| spkr:prec      |    1|   31|   1.40|  0.25|          |  0.00|
+| spkr:load      |    1|   31|   0.78|  0.38|          |  0.00|
+| prec:load      |    1|   31|   0.05|  0.82|          |  0.00|
+| spkr:prec:load |    1|   31|   1.12|  0.30|          |  0.00|
