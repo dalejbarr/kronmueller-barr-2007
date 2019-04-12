@@ -1,0 +1,87 @@
+# kronmueller-barr-2007
+
+Repository of data and scripts for:
+
+Kronmüller, E., &amp; Barr, D. J. (2007). [Perspective-free pragmatics: Broken precedents and the recovery-from-preemption hypothesis.](https://doi.org/10.1016/j.jml.2006.05.002) *Journal of Memory and Language*, *56*, 436--455.
+
+Currently this repository contains only response time data for Experiment 2.
+
+# Codebooks
+
+## Experiment 2
+
+- 1792 total observations from 56 subjects and 32 stimuli (*Note*: three observations were removed; see p. 447 of the manuscript)
+
+### Response Time
+
+```{r rt_codebook, message = FALSE, results = 'markdown', echo = FALSE}
+suppressPackageStartupMessages(library("tidyverse"))
+
+tribble(~column, ~description,
+        "subj", "unique subject identifier",
+        "item", "unique stimulus item identifier",
+        "spkr", "whether the speaker was old or new",
+        "prec", "whether the precedent was broken or maintained",
+        "load", "whether the subject was under cognitive load",
+        "rt_trunc", "response time, truncated at 5171 ms",
+        "rt_raw", "response time, not truncated") %>%
+  knitr::kable("markdown")
+```
+
+#### Table 3 (p. 448)
+
+*Note:* The values in Table 3 are based on the raw (non-truncated) values.
+
+```{r tbl-3}
+library("tidyverse")
+
+kb07 <- readRDS("kb07_rt.rds")
+
+kb07 %>%
+  group_by(spkr, prec, load) %>%
+  summarize(mean = mean(rt_raw), sd = sd(rt_raw)) %>%
+  ungroup() %>%
+  knitr::kable("markdown", digits = 0)
+```
+
+#### Analysis by Subject (p. 448)
+
+```{r f1-f2, echo = TRUE}
+subj_means_trunc <- kb07 %>%
+  group_by(subj, spkr, prec, load) %>%
+  summarize(rt = mean(rt_trunc)) %>%
+  ungroup() %>%
+  mutate(spkr = factor(spkr),
+         prec = factor(prec),
+         load = factor(load))
+
+by_subj <- ez::ezANOVA(subj_means_trunc,
+            rt,
+            wid = subj,
+            within = .(spkr, prec, load),
+            type = 3)$ANOVA
+
+by_subj %>%
+  knitr::kable("markdown", digits = 2)
+```
+
+#### Analysis by Item (p. 448)
+
+```{r exp2-rt-by-item}
+item_means_trunc <- kb07 %>%
+  group_by(item, spkr, prec, load) %>%
+  summarize(rt = mean(rt_trunc)) %>%
+  ungroup() %>%
+  mutate(spkr = factor(spkr),
+         prec = factor(prec),
+         load = factor(load))
+
+by_item <- ez::ezANOVA(item_means_trunc,
+            rt,
+            wid = item,
+            within = .(spkr, prec, load),
+            type = 3)$ANOVA
+
+by_item %>%
+  knitr::kable("markdown", digits = 2)
+```
