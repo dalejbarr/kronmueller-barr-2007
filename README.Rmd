@@ -14,6 +14,8 @@ Currently this repository contains only response time data for Experiment 2.
 
 ### Response Time
 
+- The full data are available in [`kb07_exp2_rt.rds`](kb07_exp2_rt.rds).
+
 ```{r rt_codebook, message = FALSE, results = 'markdown', echo = FALSE}
 suppressPackageStartupMessages(library("tidyverse"))
 
@@ -35,7 +37,7 @@ tribble(~column, ~description,
 ```{r tbl-3}
 library("tidyverse")
 
-kb07 <- readRDS("kb07_rt.rds")
+kb07 <- readRDS("kb07_exp2_rt.rds")
 
 kb07 %>%
   group_by(spkr, prec, load) %>%

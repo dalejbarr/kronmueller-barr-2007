@@ -18,6 +18,8 @@ Experiment 2
 
 ### Response Time
 
+-   The full data are available in [`kb07_exp2_rt.rds`](kb07_exp2_rt.rds).
+
 | column     | description                                    |
 |:-----------|:-----------------------------------------------|
 | `subj`     | unique subject identifier                      |
@@ -35,7 +37,7 @@ Experiment 2
 ``` r
 library("tidyverse")
 
-kb07 <- readRDS("kb07_rt.rds")
+kb07 <- readRDS("kb07_exp2_rt.rds")
 
 kb07 %>%
   group_by(spkr, prec, load) %>%
